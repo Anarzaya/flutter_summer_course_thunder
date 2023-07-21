@@ -40,11 +40,16 @@ class Car {
     this.carengine = carengine;
   }
 
-  void.showInfo () {
-    print()
+  void showInfo () {
+    print('My name is ${this.name} and I have');
+    this.carwheel.showInfo();
   }
 }
 
 void main() {
-  final
+  final Wheel wheel = Wheel(numberOfWheels: 2);
+  final Engine engine = Engine(numberOfEngine: 1);
+  final CarBody body = CarBody(numberOfBody: 1);
+  final Car bugatti = Car(carwheel: wheel, carengine: engine, carbody: body, name: "bugatti");
+  bugatti.showInfo();
 }
