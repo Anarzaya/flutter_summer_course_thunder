@@ -1,24 +1,36 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    theme: ThemeData(fontFamily: 'Ribeye'),
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text('Hello'),
-      ),
-      body: Container(
-        child: Center(
-          child: Text(
-            'Hello Body',
-            style: TextStyle(fontSize: 34, color: Color(0xFF342EEE)),
+  final MySuperApp superapp = MySuperApp();
+  runApp(superapp);
+}
+
+class MySuperApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(fontFamily: 'Ribeye'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Hello Anarzaya'),
+        ),
+        body: Container(
+          child: Center(
+            child: Image.asset(
+              'assets/images/download.jpeg',
+            ),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: printMe,
+          child: Image.asset('assets/images/download.jpeg'),
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.thumb_up),
-      ),
-    ),
-  ));
+    );
+  }
+}
+
+void printMe() {
+  print('Hello, me');
 }
