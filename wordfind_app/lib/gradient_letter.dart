@@ -27,7 +27,7 @@ class GradientLetter extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              'Letter',
+              letter,
               style: TextStyle(fontSize: 32, height: 52/38, color: Colors.white),
 
             ),
