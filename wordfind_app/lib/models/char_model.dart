@@ -4,22 +4,23 @@ class CharModel {
   String? correctValue;
   bool hintShow;
 
-  CharModel({this.currentValue, this.currentIndex, this.correctValue, this.hintShow = false});
+  CharModel(
+      {this.currentValue,
+      this.currentIndex,
+      this.correctValue,
+      this.hintShow = false});
 
-  getCurrentValue()
-  {
-    if(correctValue !=null) {
+  getCurrentValue() {
+    if (correctValue != null) {
       return currentValue;
     }
-    if(hintShow) {
+    if (hintShow) {
       return correctValue;
     }
   }
 
-  clearValue()   {
+  clearValue() {
     currentValue = null;
     currentIndex = null;
   }
 }
-
-
