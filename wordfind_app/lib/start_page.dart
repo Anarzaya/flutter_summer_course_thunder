@@ -49,7 +49,7 @@ class _StartpageState extends State<Startpage> {
               GradientText('Player Name', 20),
               Padding(padding: EdgeInsets.only(top: 20)),
               InputField(
-
+                onSubmitted: _createUser,
               )
             ],
           ),
@@ -75,35 +75,35 @@ class StartButton extends StatelessWidget {
     return newUser.userName == 'Guest'
         ? Container()
         : Container(
-      width: 310,
-      height: 60,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [Color(0xFFE86B02), Color(0XFFFA9541)],
-        ),
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: ElevatedButton(
-        child: Text(
-          'START',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontFamily: 'Nunito',
-            fontSize: 24,
-          ),
-        ),
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => TaskPage(newUser)));
-        },
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25))),
-      ),
-    );
+            width: 310,
+            height: 60,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [Color(0xFFE86B02), Color(0XFFFA9541)],
+              ),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: ElevatedButton(
+              child: Text(
+                'START',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontFamily: 'Nunito',
+                  fontSize: 24,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TaskPage(newUser)));
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25))),
+            ),
+          );
   }
 }

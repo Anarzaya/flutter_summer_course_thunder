@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wordfind_app/data/questions.dart';
 
 import 'models/task_model.dart';
 import 'models/user_model.dart';
@@ -28,12 +29,12 @@ class _TaskPageState extends State<TaskPage> {
       backgroundColor: Color(0xFFFBF5F2),
       appBar: AppBar(
         leading: IconButton(
-            icon: Image.asset('assets/arrow_back.png'), onPressed: () {}),
+            icon: Image.asset('assets/arrow_back.png'), onPressed: () {Navigator.pop(context);}),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Anarzaya',
+          user.userName,
           style: TextStyle(
             fontSize: 24,
             color: Color(0xFFE86B02),
