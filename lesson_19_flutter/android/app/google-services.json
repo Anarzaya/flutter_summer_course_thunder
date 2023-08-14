@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "837573692046",
+    "project_id": "lesson-19-flutter-anarzaya",
+    "storage_bucket": "lesson-19-flutter-anarzaya.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837573692046:android:e48434483293799dedd7df",
+        "android_client_info": {
+          "package_name": "com.example.lesson_19_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837573692046-l3do7dpjig06632nvramgert18vid15o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLye7__EsEvKn473uMo-Bu-3O24TvE9Ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837573692046-l3do7dpjig06632nvramgert18vid15o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
