@@ -39,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               TextFieldInput(
                 hintText: 'Утасны дугаар',
                 isPassword: false,
-                textEditingController: _emailController,
+                textEditingController: _emailController, textInputType: TextInputType.emailAddress,
               ),
               SizedBox(
                 height: 24,
@@ -47,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               TextFieldInput(
                 hintText: 'Хэрэглэгчийн нэр',
                 isPassword: false,
-                textEditingController: _userNameController,
+                textEditingController: _userNameController, textInputType: TextInputType.text,
               ),
               SizedBox(
                 height: 24,
@@ -55,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               TextFieldInput(
                 hintText: 'Нууц үг',
                 isPassword: true,
-                textEditingController: _passwordController,
+                textEditingController: _passwordController, textInputType: TextInputType.text,
               ),
               SizedBox(
                 height: 24,
@@ -63,7 +63,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               TextFieldInput(
                 hintText: 'Нууц үг давтах',
                 isPassword: true,
-                textEditingController: _passwordController,
+                textEditingController: _passwordController, textInputType: TextInputType.text,
               ),
               SizedBox(
                 height: 24,
