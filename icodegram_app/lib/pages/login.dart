@@ -1,66 +1,85 @@
 import 'package:flutter/material.dart';
+import 'package:icodegram_app/components/text_field_input.dart';
+import 'package:icodegram_app/resources/auth_methods.dart';
+import 'package:icodegram_app/pages/home_screen.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginScreenState extends State<LoginScreen> {
+  bool _isLoading = false;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void loginUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String result = await AuthMethods().loginUser(
+        email: _emailController.text, password: _passwordController.text);
+    if (result == 'success') {
+      setState(() {
+        _isLoading = false;
+      });
+      print('Logged in');
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    } else {
+      print('Not logged in');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
+      body: SafeArea(
         child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 32),
+          width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("iCodegram",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35.5333366394043,
-                    fontWeight: FontWeight.w400,
-                  )),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 52, horizontal: 16),
-                child: TextField(
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
+              Flexible(
+                flex: 2,
+                child: Container(),
+              ),
+              Text('iCodegram', style: TextStyle(color: Colors.white, fontFamily: 'Lobster', fontSize: 34),
+              ),
+              SizedBox(height: 64),
+              TextFieldInput(
+                  hintText: 'И-мейл хаяг',
+                  isPassword: false,
+                  textEditingController: _emailController,
+                  textInputType: TextInputType.emailAddress),
+              SizedBox(height: 24),
+              TextFieldInput(
+                  hintText: 'Нууц үг',
+                  isPassword: true,
+                  textEditingController: _passwordController,
+                  textInputType: TextInputType.text),
+              SizedBox(height: 24),
+              InkWell(
+                onTap: loginUser,
+                child: Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                      ),
+                      color: Colors.orange),
+                  child: Center(
+                    child: _isLoading ? Center ( child : CircularProgressIndicator(color: Colors.white)) : Text('Нэвтрэх') ,
+                  ),
                 ),
               ),
-              TextField(
-                decoration: InputDecoration(
-
-
-                  )
-                ),
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
-              ),
-              ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Нэвтрэх',
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  )),
-              Row(
-                children: [
-                  Text(
-                    'Шинэ хэрэглэгч үү?',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Rubik',
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  )
-                ],
-              )
+              SizedBox(height: 12),
+              Flexible(flex: 2, child: Container()),
             ],
           ),
         ),
