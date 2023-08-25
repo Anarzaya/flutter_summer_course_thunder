@@ -1,6 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lesson_19_flutter/components/text_field_input.dart';
 import 'package:lesson_19_flutter/resources/auth_methods.dart';
+import 'package:lesson_19_flutter/utils/utils.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -13,6 +17,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _userNameController = TextEditingController();
+  Uint8List? _image;
+  void selectImage() async {
+    Uint8List image = await pickImage(ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +43,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 style: TextStyle(
                   fontSize: 34,
                 ),
+              ),
+              Stack(
+                children: [
+                  _image != null ? CircleAvatar(radius: 64, backgroundImage: MemoryImage(_image!)) : CircleAvatar(radius: 64, backgroundImage: NetworkImage('https://toppng.com/uploads/preview/instagram-default-profile-picture-11562973083brycehrmyv.png')),
+                  Positioned(bottom: -10, left: 80, child: IconButton(icon: Icon(Icons.add_a_photo), onPressed: selectImage))
+                ],
               ),
               SizedBox(
                 height: 64,
@@ -73,7 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   AuthMethods().signUpUser(
                       email: _emailController.text,
                       password: _passwordController.text,
-                      username: _userNameController.text)
+                      username: _userNameController.text,)
                 },
                 child: Container(
                   width: double.infinity,
